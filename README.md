@@ -8,4 +8,7 @@ Yleisiä linkkejä:
 ## Työn aihe
 
 Laita tähän aihekuvaus tai [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Tyoaihekanta.html) 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8183802e892f04b82aa6d0330c18d9b79bd30980
