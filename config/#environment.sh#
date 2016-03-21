@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# korvaa tämä omalla käyttäjätunnuksellasi
+USERNAME="juslesan"
+# korvaa tämä haluamallasi kansion nimellä
+PROJECT_FOLDER="projekti"
+# sovelluksesi tulee sijaitsemaan osoitteessa juslesan.users.cs.helsinki.fi/projekti
