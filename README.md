@@ -2,7 +2,7 @@
 
 Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](juslesan.users.cs.helsinki.fi/projekti)
+* [Linkki sovellukseeni](https://juslesan.users.cs.helsinki.fi/projekti)
 * [Linkki dokumentaatiooni](https://github.com/juslesan/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 ## Työn aihe
