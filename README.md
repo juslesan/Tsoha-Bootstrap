@@ -3,6 +3,9 @@
 Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](https://juslesan.users.cs.helsinki.fi/projekti)
+* [Linkki työaihelistalle](https://juslesan.users.cs.helsinki.fi/projekti/tyoaiheet)
+* [Linkki työaiheeseen esittelyyn](https://juslesan.users.cs.helsinki.fi/projekti/tyoaiheet/1)
+* [Linkki työaiheen muokkaukseen](https://juslesan.users.cs.helsinki.fi/projekti/tyoaiheet/1/edit)
 * [Linkki dokumentaatiooni](https://github.com/juslesan/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 ## Työn aihe
