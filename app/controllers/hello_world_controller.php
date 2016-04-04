@@ -7,9 +7,14 @@ class HelloWorldController extends BaseController {
         View::make('suunnitelmat/etusivu.html');
     }
 
-    public static function sandbox() {
-        View::make('helloworld.html');
-    }
+      public static function sandbox(){
+    $tyoaihe = tyoaihe::find('Työaihe');
+    $tyoaiheet = tyoaihe::all();
+
+    Kint::dump($tyoaiheet);
+    Kint::dump($tyoaihe);
+  }
+
 
     public static function edit() {
         View::make('suunnitelmat/tyoaihe_edit.html');
