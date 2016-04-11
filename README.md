@@ -8,6 +8,8 @@ Yleisiä linkkejä:
 * [Linkki työaiheen muokkaukseen](https://juslesan.users.cs.helsinki.fi/projekti/tyoaiheet/1/edit)
 * [Linkki dokumentaatiooni](https://github.com/juslesan/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
+Sivulle pääsee kirjautumaan käyttäjätunnuksella Santeri ja salasanalla Santeri123.
+
 ## Työn aihe
 
 Laita tähän aihekuvaus tai [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Tyoaihekanta.html) 
