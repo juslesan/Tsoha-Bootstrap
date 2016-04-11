@@ -2,9 +2,18 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% if message %}
+<div class="alert alert">
+    <ul>
+        <li>{{message}}</li>
+    </ul>
+</div>
+{% endif %}
+
 <h1>Työaihekanta</h1>
 
 <p>
-    Tämä sivu toimii etusivuna ja esitteelee käyttäjälle mikä on sivuston tarkoitus.
+    Tervetuloa Työaihekantaan! Täällä opiskelijat voivat tutustua laboratoriokursseilla toteutettaviin työaiheisiin.
+    Henkilökunta voi kirjautua sisään sivuston oikean yläkulman linkistä ja lisätä uusia työaiheita ja kirjata valmiille työaiheille suorituksia. (WIP)
 </p>
 {% endblock %}

@@ -22,19 +22,55 @@ class Tyoaihe_controller extends BaseController {
         View::make('suunnitelmat/tyoaihe_edit.html', array('tyoaihe' => $tyoaihe));
     }
 
+    public static function update($id) {
+        $params = $_POST;
+
+        $attributes = array(
+            'id' => $id,
+            'nimi' => $params['nimi'],
+            'kuvaus' => $params['kuvaus']
+        );
+        $tyoaihe = new Tyoaihe($attributes);
+        $errors = $tyoaihe->errors();
+
+        if (count($errors) > 0) {
+            View::make('suunnitelmat/tyoaihe_edit.html', array('errors' => $errors, 'attributes' => $attributes));
+        } else {
+            $tyoaihe->update();
+
+            Redirect::to('/tyoaiheet/' . $tyoaihe->id, array('message' => 'Työaihetta on muokattu onnistuneesti!'));
+        }
+    }
+
+    public static function destroy($id) {
+
+        $tyoaihe = Tyoaihe::find($id);
+
+        $tyoaihe->destroy();
+
+        Redirect::to('/tyoaiheet', array('message' => 'Tyoaihe on poistettu onnistuneesti!'));
+    }
+
     public static function store() {
         $params = $_POST;
 
-        $tyoaihe = new Tyoaihe(array(
+        $attributes = array(
             'nimi' => $params['nimi'],
             'kuvaus' => $params['kuvaus']
-        ));
+        );
+        $tyoaihe = new Tyoaihe($attributes);
 
-//        Kint::dump($params);
+        $errors = $tyoaihe->errors();
 
-        $tyoaihe->save();
+        if (count($errors) == 0) {
 
-        Redirect::to('/tyoaiheet/' . $tyoaihe->id, array('message' => 'Työaihe on lisätty kantaan!'));
+            $tyoaihe->save();
+
+            Redirect::to('/tyoaiheet/' . $tyoaihe->id, array('message' => 'Työaihe on lisätty kantaan!'));
+        } else {
+
+            View::make('/suunnitelmat/new.html', array('errors' => $errors, 'attributes' => $attributes));
+        }
     }
 
     public static function create() {

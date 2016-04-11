@@ -6,6 +6,7 @@ class Tyoaihe extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
+        $this->validators = array('validate_nimi', 'validate_kuvaus');
     }
 
     public static function all() {
@@ -56,6 +57,30 @@ class Tyoaihe extends BaseModel {
 //        Kint::dump($row);
 
         $this->id = $row['id'];
+    }
+
+    public function update() {
+        $kysely = DB::connection()->prepare('UPDATE Tyoaihe SET nimi = :nimi, kuvaus = :kuvaus WHERE id = :id');
+        $kysely->execute(array('nimi' => $this->nimi, 'kuvaus' => $this->kuvaus, 'id' => $this->id));
+        $row = $kysely->fetch();
+
+//        $this->id = $row['id'];
+    }
+
+    public function destroy() {
+        $kysely = DB::connection()->prepare('DELETE FROM Tyoaihe WHERE id = :id');
+        $kysely->execute(array('id' => $this->id));
+        $row = $kysely->fetch();
+        
+        
+    }
+
+    public function validate_nimi() {
+        return parent::validate_string_length($this->nimi, 50);
+    }
+
+    public function validate_kuvaus() {
+        return parent::validate_string_length($this->kuvaus, 3000);
     }
 
 }

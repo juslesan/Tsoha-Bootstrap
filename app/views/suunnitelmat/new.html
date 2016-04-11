@@ -1,21 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Lisää Työaihe tietokantaan</h1>
+<h1>Lisää työaihe tietokantaan {{user_logged_in.nimi}}</h1>
 
-  <form method="post" action="{{base_path}}/tyoaiheet">
+{% if errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for error in errors %}
+        <li>{{error}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+<form method="post" action="{{base_path}}/tyoaiheet">
     <div class="form-group">
-      <label>Nimi</label>
-      <input type="text" name="nimi" class="form-control">
+        <label>Nimi</label>
+        <input type="text" name="nimi" class="form-control" value="{{attributes.nimi}}">
     </div>
 
     <div class="form-group">
-      <label>Kuvaus</label>
-      <input type="text" name="kuvaus" class="form-control">
+        <label>Kuvaus</label>
+        <input type="text" name="kuvaus" class="form-control" value="{{attributes.kuvaus}}">
     </div>
 
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Lisää</button>
+        <button type="submit" class="btn btn-primary">Lisää</button>
     </div>
-  </form>
+</form>
 {% endblock %}
 

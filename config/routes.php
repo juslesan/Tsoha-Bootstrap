@@ -19,8 +19,23 @@ $routes->get('/tyoaiheet/:id', function($id) {
 $routes->get('/tyoaiheet/:id/edit', function($id) {
     Tyoaihe_controller::edit($id);
 });
+$routes->post('/tyoaiheet/:id/edit', function($id){
+  Tyoaihe_controller::update($id);
+});
+
+$routes->post('/tyoaiheet/:id/destroy', function($id){
+  Tyoaihe_controller::destroy($id);
+});
 $routes->post('/tyoaiheet', function() {
     Tyoaihe_controller::store();
+});
+$routes->get('/login', function(){
+  // Kirjautumislomakkeen esittäminen
+  UserController::login();
+});
+$routes->post('/login', function(){
+  // Kirjautumisen käsittely
+  UserController::handle_login();
 });
 
 
