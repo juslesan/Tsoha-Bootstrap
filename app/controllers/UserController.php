@@ -1,12 +1,12 @@
 <?php
 
 class UserController extends BaseController{
+//    kirjautuminen
   public static function login(){
       View::make('suunnitelmat/kirjautuminen.html');
   }
   public static function handle_login(){
     $params = $_POST;
-
     $opettaja = Opettaja::authenticate($params['nimi'], $params['salasana']);
 
     if(!$opettaja){

@@ -1,0 +1,21 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h1>Suorituksen {{suoritus.id}} tiedot</h1>
+
+<ul>
+    <li><strong>Opettaja</strong> {{suoritus.opettaja_id}} </li>
+    <li>
+<th><a href="/projekti/tyoaiheet/{{suoritus.tyoaihe_id}}">Työaihe</a></th>    </li>
+    <li><strong>Arvosana</strong> {{suoritus.arvosana}}</li>
+    <li><strong>Suoritusaika tunteina</strong> {{suoritus.suoritusaika}}</li>
+</ul>
+
+<p>
+    {{tyoaihe.kuvaus}}
+</p>
+
+<p>
+    <a href="/projekti/tyoaiheet/{{suoritus.tyoaihe_id}}/suoritukset/{{suoritus.id}}/edit" class="btn btn-default">Muokkaa</a>
+</p>
+{% endblock %}
