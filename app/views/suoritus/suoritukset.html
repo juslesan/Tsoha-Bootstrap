@@ -2,11 +2,19 @@
 {% block content %}
 <h1>Listaus työaiheen suorituksista</h1>
 
+{% if message %}
+<div class="alert alert">
+    <ul>
+        <li>{{message}}</li>
+    </ul>
+</div>
+{% endif %}
+
 <p>
     <a href="/projekti/tyoaiheet/{{tyoaihe.id}}/uusisuoritus" class="btn btn-success">Lisää suoritus</a>
     
 </p>
-
+<!--listaus työaiheen suorituksista-->
 <table class="table table-striped table-bordered">
     <thead>
         <tr>        
@@ -16,7 +24,7 @@
             <th></th>
         </tr>
     </thead>
-
+<!--suorituksen tiedot-->
     <tbody>
         {% for suoritus in suoritukset %}
         <tr>    

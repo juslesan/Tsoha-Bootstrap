@@ -12,7 +12,10 @@ Sivulle pääsee kirjautumaan käyttäjätunnuksella Santeri ja salasanalla Sant
 
 ## Työn aihe
 
-Laita tähän aihekuvaus tai [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Tyoaihekanta.html) 
+Työn aihe perustuu valmiiseen aiheeseen omilla muokkauksillani. Työn on
+tarkoitus toimia työaihekantana kenelle tahansa, haluaa esitellä kurssien 
+työaiheita kurssin suorittajille. Samalla seurataan työaiheiden suorituksia ja 
+keskeytyksiä. [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Tyoaihekanta.html) 
 <<<<<<< HEAD
 
 

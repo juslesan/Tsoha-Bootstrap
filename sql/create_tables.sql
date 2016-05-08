@@ -21,12 +21,8 @@ CREATE TABLE Suoritus(
 CREATE TABLE Laboratoriokurssi(
     id SERIAL PRIMARY KEY,
     opettaja_id INTEGER REFERENCES Opettaja(id),
-    nimi varchar(50) NOT NULL
-);
-
-CREATE TABLE Yhteenveto(
-    id SERIAL PRIMARY KEY,
-    laboratoriokurssi_id INTEGER REFERENCES Laboratoriokurssi(id)
+    nimi varchar(50) NOT NULL,
+    kuvaus varchar(2000) NOT NULL
 );
 
 CREATE TABLE Labratyoaihe(

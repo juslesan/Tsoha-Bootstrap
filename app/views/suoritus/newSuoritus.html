@@ -10,6 +10,7 @@
         {% endfor %}
     </ul>
 </div>
+<!--lisäyslomake jos virheitä-->
 <form method="post" action="{{base_path}}/tyoaiheet/{{tyoaihe}}/suoritukset">
     <div class ="form-group">
         <label> Opettaja (Älä muuta!) </label>
@@ -35,7 +36,7 @@
     </div>
 </form>
 {% else %}
-
+<!--lisäyslomake-->
 <form method="post" action="{{base_path}}/tyoaiheet/{{tyoaihe}}/suoritukset">
     <div class ="form-group">
         <label> Opettaja (Älä muuta!) </label>

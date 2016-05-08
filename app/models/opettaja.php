@@ -8,7 +8,7 @@ class Opettaja extends BaseModel {
         parent::__construct($attributes);
         $this->validators = array('validate_nimi', 'validate_nimi');
     }
-
+//kirjautuminen
     public function authenticate($nimi, $salasana) {
         $query = DB::connection()->prepare('SELECT * FROM Opettaja WHERE nimi = :nimi AND salasana = :salasana LIMIT 1');
         $query->execute(array('nimi' => $nimi, 'salasana' => $salasana));
@@ -27,6 +27,7 @@ class Opettaja extends BaseModel {
             // Käyttäjää ei löytynyt, palautetaan null
         }
     }
+    
      public static function find($id) {
         $kysely = DB::connection()->prepare('SELECT * FROM Opettaja WHERE id = :id LIMIT 1');
         $kysely->execute(array('id' => $id));

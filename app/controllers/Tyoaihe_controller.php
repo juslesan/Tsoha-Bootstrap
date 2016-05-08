@@ -5,24 +5,33 @@ class Tyoaihe_controller extends BaseController {
 //listaus
     public static function index() {
 
-        $tyoaiheet = Tyoaihe::all();
+        $params = $_GET;
+        if (isset($params['search'])) {
+            $tyoaiheet = Tyoaihe::all($params);
+            View::make('tyoaihe/tyoaihe_list.html', array('tyoaiheet' => $tyoaiheet));
+        } else {
 
-        View::make('suunnitelmat/tyoaihe_list.html', array('tyoaiheet' => $tyoaiheet));
+            $tyoaiheet = Tyoaihe::all($params);
+            View::make('tyoaihe/tyoaihe_list.html', array('tyoaiheet' => $tyoaiheet));
+        }
     }
+
 //esittely
     public static function show($id) {
 
         $tyoaihe = Tyoaihe::find($id);
 
-        View::make('suunnitelmat/tyoaihe_show.html', array('tyoaihe' => $tyoaihe));
+        View::make('tyoaihe/tyoaihe_show.html', array('tyoaihe' => $tyoaihe));
     }
+
 //muokkaus
     public static function edit($id) {
         parent::check_logged_in();
         $tyoaihe = Tyoaihe::find($id);
 
-        View::make('suunnitelmat/tyoaihe_edit.html', array('tyoaihe' => $tyoaihe));
+        View::make('tyoaihe/tyoaihe_edit.html', array('tyoaihe' => $tyoaihe));
     }
+
 //muokkaus
     public static function update($id) {
         parent::check_logged_in();
@@ -37,13 +46,14 @@ class Tyoaihe_controller extends BaseController {
         $errors = $tyoaihe->errors();
 
         if (count($errors) > 0) {
-            View::make('suunnitelmat/tyoaihe_edit.html', array('errors' => $errors, 'attributes' => $attributes));
+            View::make('tyoaihe/tyoaihe_edit.html', array('errors' => $errors, 'attributes' => $attributes));
         } else {
             $tyoaihe->update();
 
             Redirect::to('/tyoaiheet/' . $tyoaihe->id, array('message' => 'Työaihetta on muokattu onnistuneesti!'));
         }
     }
+
 //poisto
     public static function destroy($id) {
         parent::check_logged_in();
@@ -54,6 +64,7 @@ class Tyoaihe_controller extends BaseController {
 
         Redirect::to('/tyoaiheet', array('message' => 'Tyoaihe on poistettu onnistuneesti!'));
     }
+
 //lisäys
     public static function store() {
         parent::check_logged_in();
@@ -74,13 +85,14 @@ class Tyoaihe_controller extends BaseController {
             Redirect::to('/tyoaiheet/' . $tyoaihe->id, array('message' => 'Työaihe on lisätty kantaan!'));
         } else {
 
-            View::make('/suunnitelmat/new.html', array('errors' => $errors, 'attributes' => $attributes));
+            View::make('/tyoaihe/new.html', array('errors' => $errors, 'attributes' => $attributes));
         }
     }
+
 //lisäys
     public static function create() {
         parent::check_logged_in();
-        View::make('suunnitelmat/new.html');
+        View::make('tyoaihe/new.html');
     }
 
 }

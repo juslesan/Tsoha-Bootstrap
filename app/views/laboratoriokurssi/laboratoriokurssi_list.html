@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Listaus laboratoriokursseista</h1>
+
+<p>
+    <a href="/projekti/kurssit/new" class="btn btn-success">Lisää laboratoriokurssi</a>
+
+</p>
+
+{% if message %}
+<div class="alert alert">
+    <ul>
+        <li>{{message}}</li>
+    </ul>
+</div>
+{% endif %}
+<!--taulukko kursseista-->
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>        
+            <th>Nimi</th>
+            <th>Opettaja</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for kurssi in kurssit %}
+        <tr>    
+            <td><a href="/projekti/kurssit/{{kurssi.id}}">{{kurssi.nimi}}</a></td>
+            <td>{{kurssi.opettaja_id}}</td>
+            <th><a class="btn btn-default btn-sm" href="/projekti/kurssit/{{kurssi.id}}/edit">Muokkaa</a></th>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+

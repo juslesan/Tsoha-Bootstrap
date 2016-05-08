@@ -1,0 +1,29 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h1>{{kurssi.nimi}}</h1>
+
+{% if message %}
+<div class="alert alert">
+    <ul>
+        <li>{{message}}</li>
+    </ul>
+</div>
+{% endif %}
+
+<!-- Tiedot tulee listana tähän -->
+<ul>
+    <li><strong>Opettaja:</strong> {{kurssi.opettaja_id}} </li>
+
+</ul>
+<!-- Kuvaus tulee tähän -->
+<p>
+    {{kurssi.kuvaus}}
+</p>
+<!-- Painikkeet tähän -->
+<p>
+    
+    <a href="/projekti/kurssit/{{kurssi.id}}/edit" class="btn btn-default">Muokkaa</a>
+    <a href="/projekti/kurssit/{{kurssi.id}}/tyoaiheet" class="btn btn-default">Kurssin työaiheet</a>
+</p>
+{% endblock %}

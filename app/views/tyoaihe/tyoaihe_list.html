@@ -5,11 +5,32 @@
 
 <p>
     <a href="/projekti/tyoaiheet/new" class="btn btn-success">Lisää työaihe</a>
-    
+
+{% if message %}
+<div class="alert alert">
+    <ul>
+        <li>{{message}}</li>
+    </ul>
+</div>
+{% endif %}
+
+<!--hakutoiminto-->
+<form method="get" action="" class="form-inline">
+    <div class="form group" align="right">
+        <input type="text" name="search" class="form-control" placeholder="Hakusana">
+    </div>
+
+    <div class="form group" align="right">
+
+        <button type="submit" class="btn btn-primary">Hae</button>
+    </div>
+</form>
+
 </p>
 
 <table class="table table-striped table-bordered">
     <thead>
+        <!--sarakkeet-->
         <tr>
             <th>Nimi</th>
             <th>Suoritusten määrä </th>
@@ -25,10 +46,10 @@
         {% for tyoaihe in tyoaiheet %}
         <tr>
             <td><a href="/projekti/tyoaiheet/{{tyoaihe.id}}">{{tyoaihe.nimi}}</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
+            <td>{{tyoaihe.maara}}</td>
+            <td>{{tyoaihe.tuntimaara}}</td>
+            <td>{{tyoaihe.keskeytykset}}</td>
+            <td>{{tyoaihe.keskiarvo}}</td>
 
             <th><a class="btn btn-default btn-sm" href="/projekti/tyoaiheet/{{tyoaihe.id}}/edit">Muokkaa</a></th>
         </tr>

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Listaus laboratoriokurssin työaiheista</h1>
+
+<p>
+    <a href="/projekti/kurssit/{{kurssi}}/tyoaiheet/add" class="btn btn-success">Lisää työaiheita</a>
+
+</p>
+{% if message %}
+<div class="alert alert">
+    <ul>
+        <li>{{message}}</li>
+    </ul>
+</div>
+{% endif %}
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Nimi</th>
+            <th>Suoritusten määrä </th>
+            <th>Keskimääräinen tuntimäärä</th>
+            <th>Keskeytykset</th>
+            <th>Arvosanojen keskiarvo</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <!-- Listataan työaiheet tähän -->
+        {% for tyoaihe in tyoaiheet %}
+        <tr>
+            <td><a href="/projekti/tyoaiheet/{{tyoaihe.id}}">{{tyoaihe.nimi}}</td>
+            <td>{{tyoaihe.maara}}</td>
+            <td>{{tyoaihe.tuntimaara}}</td>
+            <td>{{tyoaihe.keskeytykset}}</td>
+            <td>{{tyoaihe.keskiarvo}}</td>
+
+
+    <form method="post" action="{{base_path}}/kurssit/{{kurssi}}/tyoaiheet/{{tyoaihe.id}}/destroy" style="display: inline-block;">
+        <td><button type="submit" class="btn btn-danger">Poista</button></td>
+    </form>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}

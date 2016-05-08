@@ -8,7 +8,7 @@ class Suoritus_controller extends BaseController {
 
         $tyoaihe = Tyoaihe::find($tyoaihe_id);
 
-        View::make('suunnitelmat/suoritukset.html', array('suoritukset' => $suoritukset, 'tyoaihe' => $tyoaihe));
+        View::make('suoritus/suoritukset.html', array('suoritukset' => $suoritukset, 'tyoaihe' => $tyoaihe));
     }
 //uusi
     public static function store($tyoaihe_id) {
@@ -32,25 +32,25 @@ class Suoritus_controller extends BaseController {
             Redirect::to('/tyoaiheet/' . $tyoaihe_id . '/suoritukset', array('message' => 'Työaihelle on lisätty suoritus!'));
         } else {
 
-            View::make('/suunnitelmat/newSuoritus.html', array('errors' => $errors, 'attributes' => $attributes));
+            View::make('/suoritus/newSuoritus.html', array('errors' => $errors, 'attributes' => $attributes));
         }
     }
 //uusi
     public static function create($id) {
         parent::check_logged_in();
-        View::make('suunnitelmat/newSuoritus.html', array('tyoaihe' => $id, 'opettaja' => $_SESSION['opettaja']));
+        View::make('suoritus/newSuoritus.html', array('tyoaihe' => $id, 'opettaja' => $_SESSION['opettaja']));
     }
 //esittely
     public static function show($tyoaihe_id, $id) {
         parent::check_logged_in();
         $suoritus = Suoritus::find($tyoaihe_id, $id);
-        View::make('suunnitelmat/suoritus.html', array('suoritus' => $suoritus));
+        View::make('suoritus/suoritus.html', array('suoritus' => $suoritus));
     }
 //muokkaus
     public static function edit($tyoaihe_id, $id) {
         parent::check_logged_in();
         $suoritus = Suoritus::find($tyoaihe_id, $id);
-        View::make('suunnitelmat/suoritus_edit.html', array('suoritus' => $suoritus));
+        View::make('suoritus/suoritus_edit.html', array('suoritus' => $suoritus));
     }
 //muokkaus
      public static function update($tyoaihe_id, $id) {
@@ -68,7 +68,7 @@ class Suoritus_controller extends BaseController {
         $errors = $suoritus->errors();
 
         if (count($errors) > 0) {
-            View::make('suunnitelmat/suoritus_edit.html', array('errors' => $errors, 'attributes' => $attributes));
+            View::make('suoritus/suoritus_edit.html', array('errors' => $errors, 'attributes' => $attributes));
         } else {
             $suoritus->update();
 
@@ -85,5 +85,6 @@ class Suoritus_controller extends BaseController {
 
         Redirect::to('/tyoaiheet/'. $tyoaihe_id . '/suoritukset', array('message' => 'Suoritus on poistettu onnistuneesti!'));
     }
+
 }
 

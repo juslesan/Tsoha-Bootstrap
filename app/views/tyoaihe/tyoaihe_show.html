@@ -1,0 +1,27 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h1>{{tyoaihe.nimi}}</h1>
+{% if message %}
+<div class="alert alert">
+    <ul>
+        <li>{{message}}</li>
+    </ul>
+</div>
+{% endif %}
+<!-- Tiedot tulee listana tähän -->
+<ul>
+    <li><strong>Suoritusten määrä:</strong> {{tyoaihe.maara}} </li>
+    <li><strong>Keskimääräinen tuntimäärä:</strong> {{tyoaihe.tuntimaara}} </li>
+    <li><strong>Keskeytykset:</strong> {{tyoaihe.keskeytykset}}</li>
+    <li><strong>Arvosanojen keskiarvo:</strong> {{tyoaihe.keskiarvo}}</li>
+</ul>
+<!-- Kuvaus tulee tähän -->
+<p>
+    {{tyoaihe.kuvaus}}
+</p>
+<!-- Painikkeet tähän -->
+<p>
+    <a href="/projekti/tyoaiheet/{{tyoaihe.id}}/suoritukset" class="btn btn-default">Suorituskerrat (Opettajille)</a><a href="/projekti/tyoaiheet/{{tyoaihe.id}}/edit" class="btn btn-default">Muokkaa (Opettajille)</a>
+</p>
+{% endblock %}

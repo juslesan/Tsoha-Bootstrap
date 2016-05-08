@@ -8,7 +8,7 @@ class Suoritus extends BaseModel {
         parent::__construct($attributes);
         $this->validators = array('validate_arvosana', 'validate_suoritusaika');
     }
-
+//listaa kaikki työaiheen suoritukset
     public static function all($id) {
         $kysely = DB::connection()->prepare('SELECT * FROM Suoritus WHERE tyoaihe_id = :id');
 
@@ -31,7 +31,7 @@ class Suoritus extends BaseModel {
 
         return $suoritukset;
     }
-
+//löydä työaiheen suoritus
     public static function find($tyoaihe_id, $id) {
         $kysely = DB::connection()->prepare('SELECT * FROM Suoritus WHERE tyoaihe_id = :tyoaihe_id AND id = :id  LIMIT 1');
         $kysely->execute(array('tyoaihe_id' => $tyoaihe_id, 'id' => $id));
@@ -51,6 +51,7 @@ class Suoritus extends BaseModel {
 
         return null;
     }
+    //tallenna suoritus
     public function save() {
         $kysely = DB::connection()->prepare('INSERT INTO Suoritus (opettaja_id, tyoaihe_id, arvosana, suoritusaika) VALUES (:opettaja_id, :tyoaihe_id, :arvosana, :suoritusaika) RETURNING id');
         $kysely->execute(array('opettaja_id' => $this->opettaja_id, 'tyoaihe_id' => $this->tyoaihe_id, 'arvosana' => $this->arvosana, 'suoritusaika' => $this->suoritusaika));
@@ -61,7 +62,7 @@ class Suoritus extends BaseModel {
 
         $this->id = $row['id'];
     }
-
+//muokkaa suoritusta
     public function update() {
         $kysely = DB::connection()->prepare('UPDATE Suoritus SET opettaja_id = :opettaja_id, tyoaihe_id = :tyoaihe_id, arvosana = :arvosana, suoritusaika = :suoritusaika WHERE id = :id');
         $kysely->execute(array('opettaja_id' => $this->opettaja_id, 'tyoaihe_id' => $this->tyoaihe_id, 'arvosana' => $this->arvosana, 'suoritusaika' => $this->suoritusaika, 'id' => $this->id));
@@ -69,7 +70,7 @@ class Suoritus extends BaseModel {
 
 //        $this->id = $row['id'];
     }
-
+//poista suoritus
     public function destroy() {
         $kysely = DB::connection()->prepare('DELETE FROM Suoritus WHERE id = :id');
         $kysely->execute(array('id' => $this->id));

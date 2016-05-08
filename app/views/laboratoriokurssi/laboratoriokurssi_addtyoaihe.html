@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Listaus työaiheista</h1>
+
+<p>
+    <!--    <a href="/projekti/kurssit/{{kurssi}}/tyoaiheet/add" class="btn btn-success">Lisää työaiheita</a>-->
+
+</p>
+<form method="post" action="/projekti/kurssit/{{kurssi}}/tyoaiheet">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Nimi</th>
+                <th>Suoritusten määrä </th>
+                <th>Keskimääräinen tuntimäärä</th>
+                <th>Keskeytykset</th>
+                <th>Arvosanojen keskiarvo</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <!-- Listataan työaiheet tähän -->
+
+            {% for tyoaihe in tyoaiheet %}
+            <tr>
+                <td><a href="/projekti/tyoaiheet/{{tyoaihe.id}}">{{tyoaihe.nimi}}</td>
+                <td>{{tyoaihe.maara}}</td>
+                <td>{{tyoaihe.tuntimaara}}</td>
+                <td>{{tyoaihe.keskeytykset}}</td>
+                <td>{{tyoaihe.keskiarvo}}</td>
+                <td><input type="checkbox" name="tyoaiheet[]" value="{{tyoaihe.id}}" />lisää<br /></td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <td><button type="submit" class="btn btn-primary">Lisää työaihe kurssille</button></td>
+
+</form>
+
+{% endblock %}

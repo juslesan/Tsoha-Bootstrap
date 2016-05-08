@@ -3,6 +3,14 @@
 {% block content %}
 <h1>Suorituksen {{suoritus.id}} tiedot</h1>
 
+{% if message %}
+<div class="alert alert">
+    <ul>
+        <li>{{message}}</li>
+    </ul>
+</div>
+{% endif %}
+
 <ul>
     <li><strong>Opettaja</strong> {{suoritus.opettaja_id}} </li>
     <li>
